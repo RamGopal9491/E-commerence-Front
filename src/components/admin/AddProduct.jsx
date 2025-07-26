@@ -115,14 +115,19 @@ const AddProduct = () => {
         </div>
         <div>
           <label className="block text-sm font-medium mb-1">Category</label>
-          <input
-            type="text"
+          <select
             name="category"
             value={form.category}
             onChange={handleChange}
             className="w-full border border-gray-300 px-3 py-2 rounded"
             required
-          />
+          >
+            <option value="" disabled>Select a category</option>
+            <option value="Clothes">Clothes</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Shoes">Shoes</option>
+          </select>
         </div>
          <div>
           <label className="block text-sm font-medium mb-1">Description</label>

@@ -8,7 +8,6 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
-    // Check login status on mount
     const checkAuth = async () => {
       try {
         const res = await fetch('http://localhost:5000/api/auth/isAuthenticated', { credentials: 'include' });

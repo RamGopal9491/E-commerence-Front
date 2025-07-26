@@ -12,6 +12,7 @@ import Admin from './components/Admin';
 import AllProducts from './components/AllProducts';
 import Profile from './components/profile';
 import AuthLayout from './components/AuthLayout';
+import Logout from './components/Logout';
 
 function App() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function App() {
           <Route path='/profile' element={<Profile />} />
         </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </>

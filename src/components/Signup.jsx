@@ -11,6 +11,7 @@ const Signup = () => {
     email: '',
     password: '',
     confirmPassword: '',
+    role: '',
   });
 
   const [error, setError] = useState('');
@@ -37,6 +38,7 @@ const Signup = () => {
         name: form.name,
         email: form.email,
         password: form.password,
+        role: form.role,
       });
 
       setSuccess('Account created successfully!');
@@ -46,7 +48,7 @@ const Signup = () => {
         navigate('/login');
       }, 1000);
 
-      setForm({ name: '', email: '', password: '', confirmPassword: '' });
+      setForm({ name: '', email: '', password: '', confirmPassword: '', role: '' });
     } catch (err) {
       setError(
         err.response?.data?.message ||
@@ -98,6 +100,22 @@ const Signup = () => {
               required
               className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
+          </div>
+
+          {/* Role */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
+            <select
+              name="role"
+              value={form.role}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
+            >
+              <option value="" disabled>Select role</option>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
           </div>
 
           {/* Password */}
