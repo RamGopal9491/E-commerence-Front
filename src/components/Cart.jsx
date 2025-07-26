@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 const Cart = () => {
   const { cartItems, removeFromCart } = useContext(CartContext);
 
-  const totalPrice = cartItems.reduce(
+  
+  const totalPrice = (cartItems || []).reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
@@ -14,13 +15,17 @@ const Cart = () => {
     <div className="p-6 max-w-5xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
 
-      {cartItems.length === 0 ? (
+      {!cartItems || cartItems.length === 0 ? (
         <p className="text-gray-500">Your cart is empty.</p>
       ) : (
         <div className="space-y-6">
-          {cartItems.map(item => (
+          {cartItems.map((item) => (
             <div key={item.id} className="flex items-center border-b pb-4 gap-6">
-              <img src={item.images[0]} alt={item.title} className="w-24 h-24 object-cover rounded" />
+              <img
+                src={item.images?.[0] || '/placeholder.png'} 
+                alt={item.title}
+                className="w-24 h-24 object-cover rounded"
+              />
               <div className="flex-1">
                 <h2 className="text-lg font-semibold">{item.title}</h2>
                 <p>₹{item.price} x {item.quantity}</p>
